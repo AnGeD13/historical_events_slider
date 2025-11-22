@@ -46,9 +46,19 @@ module.exports = {
         ],
       },
       {
-        test: /\.(png|jpg|jpeg|gif|svg)$/,
-        type: 'asset/resource',
+        test: /\.(png|jpe?g|gif|webp|svg)$/i,
+        type: 'asset/resource',                
+        generator: {
+          filename: 'assets/images/[name].[contenthash:8][ext]'
+        }
       },
+      {
+        test: /\.(woff2?|ttf|otf|eot)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: 'assets/fonts/[name].[contenthash:8][ext]'
+        }
+},
     ],
   },
   plugins: [
