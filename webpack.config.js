@@ -12,12 +12,17 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.[contenthash].js',
     clean: true,
+    publicPath: '/',
   },
   devServer: {
     static: './dist',
     hot: true,
     port: 3000,
     open: true,
+    historyApiFallback: true,
+    static: {
+      directory: path.join(__dirname, 'public'),
+    },
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.jsx'],
@@ -38,13 +43,29 @@ module.exports = {
         },
       },
       {
-        test: /\.scss$/,
+        test: /\.scss$/i,
         use: [
           isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
-          'css-loader',
-          'sass-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                auto: (resourcePath) => {
+                  return /\.module\.scss$/.test(resourcePath);
+                },
+                localIdentName: isDev
+                  ? '[name]__[local]--[hash:base64:5]'
+                  : '[hash:base64:8]',
+                namedExport: false
+              },
+            },
+          },
+          {
+            loader: 'sass-loader',
+          }
         ],
       },
+
       {
         test: /\.(png|jpe?g|gif|webp|svg)$/i,
         type: 'asset/resource',                
@@ -58,7 +79,7 @@ module.exports = {
         generator: {
           filename: 'assets/fonts/[name].[contenthash:8][ext]'
         }
-},
+      },
     ],
   },
   plugins: [
