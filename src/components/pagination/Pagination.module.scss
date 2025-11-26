@@ -1,0 +1,40 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  column-gap: 10px;
+
+  @media screen and (min-width: 769px) {
+    display: none;
+  }
+
+  @media screen and (max-width: 500px) {
+    width: max-content;
+  }
+}
+
+.item {
+  padding: 0;
+  width: 10px;
+  aspect-ratio: 1;
+  background-color: $color-pagination;
+  border-radius: 50%;
+  border: none;
+
+  &:active {
+    background-color: $color-black-blue;
+  }
+
+  &:focus-visible {
+    outline-offset: 1px;
+    outline: 1px solid $color-black-blue;
+  }
+
+  @media screen and (max-width: 500px) {
+    width: 6px;
+  }
+}
+
+.active {
+  background-color: $color-black-blue;
+}

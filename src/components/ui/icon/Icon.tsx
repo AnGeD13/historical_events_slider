@@ -1,7 +1,8 @@
-import { SwiperControlIcon } from './icons';
+import { PeriodControlIcon, SwiperControlIcon } from './icons';
 
 const icons = {
   swiper: SwiperControlIcon,
+  period: PeriodControlIcon,
 } as const;
 
 type IconName = keyof typeof icons;

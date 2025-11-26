@@ -1,0 +1,1 @@
+export const TOTAL_POINTS = 6;
