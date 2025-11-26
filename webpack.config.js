@@ -43,6 +43,23 @@ module.exports = {
         },
       },
       {
+        test: /\.css$/,
+        use: [
+          isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              sourceMap: isDev,
+              modules: {
+                mode: 'icss',
+              },
+            },
+          },
+        ],
+        include: [/node_modules[\\/]swiper/, /\.css$/],
+      },
+      {
         test: /\.scss$/i,
         use: [
           isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
@@ -56,29 +73,34 @@ module.exports = {
                 localIdentName: isDev
                   ? '[name]__[local]--[hash:base64:5]'
                   : '[hash:base64:8]',
-                namedExport: false
+                namedExport: false,
               },
             },
           },
           {
             loader: 'sass-loader',
-          }
+            options: {
+              additionalData: `@use "@/styles/variables.scss" as *;\n`,
+              sassOptions: {
+                includePaths: [path.resolve(__dirname, 'src')],
+              },
+            },
+          },
         ],
       },
-
       {
         test: /\.(png|jpe?g|gif|webp|svg)$/i,
-        type: 'asset/resource',                
+        type: 'asset/resource',
         generator: {
-          filename: 'assets/images/[name].[contenthash:8][ext]'
-        }
+          filename: 'assets/images/[name].[contenthash:8][ext]',
+        },
       },
       {
         test: /\.(woff2?|ttf|otf|eot)$/i,
         type: 'asset/resource',
         generator: {
-          filename: 'assets/fonts/[name].[contenthash:8][ext]'
-        }
+          filename: 'assets/fonts/[name].[contenthash:8][ext]',
+        },
       },
     ],
   },

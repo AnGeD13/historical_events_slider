@@ -1,0 +1,46 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  max-width: 1440px;
+  margin-inline: auto;
+
+  &__inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: 320px;
+    border-inline: 1px solid $color-light-grey;
+    margin-left: 160px;
+
+    @media screen and (max-width: 1920px) {
+      margin: 0;
+    }
+
+    @media screen and (max-width: 768px) {
+      border: none;
+      padding: 20px;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: calc(50%);
+      height: 100%;
+      width: 1px;
+      background-color: $color-light-grey;
+      z-index: -1;
+
+      @media screen and (max-width: 768px) {
+        display: none;
+      }
+    }
+  }
+}
+
+.swiperWrapper {
+  position: relative;
+}

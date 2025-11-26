@@ -1,0 +1,17 @@
+.swiperWrapper {
+  margin-inline: 100px;
+
+  @media screen and (max-width: 768px) {
+    margin-inline: 0;
+  }
+}
+
+.newSlideClass {
+  height: initial;
+  width: 320px;
+  flex-shrink: 0;
+
+  @media screen and (max-width: 500px) {
+    width: 166px;
+  }
+}
