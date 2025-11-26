@@ -1,0 +1,114 @@
+$btn-border-color: #9299a8;
+
+.circleSection {
+  $size: 530px;
+  position: absolute;
+  top: calc(50% - $size / 2);
+  left: calc(50% - $size / 2);
+  width: $size;
+  height: $size;
+  border: 1px solid #d0d5e0;
+  border-radius: 50%;
+
+  @media screen and (max-width: 1440px) {
+    $size: 400px;
+    top: calc(50% - $size / 2);
+    left: calc(50% - $size / 2);
+    width: $size;
+    height: $size;
+  }
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+}
+
+.btnWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  cursor: pointer;
+
+  &:hover .btnPassive {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 1px solid $btn-border-color;
+    background-color: $main-bg-color;
+    font-size: 20px;
+    line-height: 30px;
+    color: $color-black-blue;
+
+    & span {
+      display: block;
+      opacity: 1;
+    }
+  }
+}
+
+.btnActive {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 1px solid $btn-border-color;
+  background-color: $main-bg-color;
+  font-size: 20px;
+  line-height: 30px;
+  color: $color-black-blue;
+  cursor: pointer;
+
+  &:focus-visible {
+    outline-offset: 4px;
+    outline: 1px solid $color-black-blue;
+  }
+
+  & span {
+    display: block;
+    opacity: 1;
+  }
+}
+
+.btnPassive {
+  width: 6px;
+  height: 6px;
+  border: none;
+  border-radius: 50%;
+  background-color: $color-black-blue;
+  padding: 0;
+  transition: $transition-duration;
+  cursor: pointer;
+
+  & span {
+    display: none;
+    opacity: 0;
+  }
+
+  &:focus-visible {
+    outline-offset: 4px;
+    outline: 1px solid $color-black-blue;
+  }
+}
+
+.btnTitle {
+  position: absolute;
+  top: 8px;
+  left: 76px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 30px;
+  color: $color-black-blue;
+
+  &::first-letter {
+    text-transform: uppercase;
+  }
+}

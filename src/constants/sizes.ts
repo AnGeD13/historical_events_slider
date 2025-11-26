@@ -1,0 +1,1 @@
+export const CIRCLE_ROTATION_BTN_SIZE = 56;

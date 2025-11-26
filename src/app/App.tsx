@@ -9,6 +9,8 @@ import styles from './App.module.scss';
 import { useSwiperControls } from '@/hook';
 import { PeriodController } from '@/components/period-controller';
 import { Pagination } from '@/components/pagination';
+import { Dates } from '@/components/ui/dates';
+import { CirclePagination } from '@/components/circle-pagination';
 
 export default function App() {
   const historicalData = data;
@@ -31,6 +33,16 @@ export default function App() {
     <div className={styles.wrapper}>
       <div className={styles.wrapperInner}>
         <Header />
+        <div className={styles.circleWrapper}>
+          <Dates
+            startDate={currentPeriod.start_period_date}
+            endData={currentPeriod.end_period_date}
+          />
+          <CirclePagination
+            activeIndex={activeIndex}
+            changePeriod={changePeriod}
+          />
+        </div>
         <main className={styles.container}>
           <section className={styles.pagAndControlWrapper}>
             <PeriodController

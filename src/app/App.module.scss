@@ -2,7 +2,6 @@
   display: flex;
   align-items: center;
   width: 100vw;
-  height: 100vh;
   max-width: 1440px;
   margin-inline: auto;
 
@@ -64,5 +63,22 @@
 
   @media screen and (max-width: 768px) {
     order: 2;
+  }
+}
+
+.circleWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 360px;
+  margin-bottom: 33px;
+
+  @media screen and (max-width: 768px) {
+    height: 186px;
+  }
+
+  @media screen and (max-width: 500px) {
+    margin-bottom: 20px;
   }
 }
