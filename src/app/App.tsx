@@ -21,12 +21,14 @@ export default function App() {
   );
 
   const [swiper, setSwiper] = useState<SwiperType | null>(null);
+  const [animationIndex, setAnimationIndex] = useState(0);
   const { isBeginning, isEnd } = useSwiperControls(swiper);
 
   const changePeriod = (i: number) => {
     setCurrentIndex(i);
     setCurrentPeriod(historicalData[i]);
     setActiveIndex(i);
+    setAnimationIndex(i);
   };
 
   return (
@@ -51,7 +53,10 @@ export default function App() {
             />
             <Pagination activeIndex={activeIndex} handleClick={changePeriod} />
           </section>
-          <section className={styles.swiperWrapper}>
+          <section
+            className={styles.swiperWrapper}
+            key={`swiper-${animationIndex}`}
+          >
             <CustomSwiper setSwiper={setSwiper} data={currentPeriod.events} />
             <SwiperControls
               swiper={swiper}
