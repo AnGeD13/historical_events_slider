@@ -32,40 +32,42 @@ export default function App() {
   };
 
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.wrapperInner}>
-        <Header />
-        <div className={styles.circleWrapper}>
-          <Dates
-            startDate={currentPeriod.start_period_date}
-            endData={currentPeriod.end_period_date}
-          />
-          <CirclePagination
-            activeIndex={activeIndex}
-            changePeriod={changePeriod}
-          />
-        </div>
-        <main className={styles.container}>
-          <section className={styles.pagAndControlWrapper}>
-            <PeriodController
-              currentIndex={currentIndex}
+    <>
+      <div className={styles.wrapper}>
+        <div className={styles.wrapperInner}>
+          <Header />
+          <div className={styles.circleWrapper}>
+            <Dates
+              startDate={currentPeriod.start_period_date}
+              endData={currentPeriod.end_period_date}
+            />
+            <CirclePagination
+              activeIndex={activeIndex}
               changePeriod={changePeriod}
             />
-            <Pagination activeIndex={activeIndex} handleClick={changePeriod} />
-          </section>
-          <section
-            className={styles.swiperWrapper}
-            key={`swiper-${animationIndex}`}
-          >
-            <CustomSwiper setSwiper={setSwiper} data={currentPeriod.events} />
-            <SwiperControls
-              swiper={swiper}
-              isBeginning={isBeginning}
-              isEnd={isEnd}
-            />
-          </section>
-        </main>
+          </div>
+          <main className={styles.container}>
+            <section className={styles.pagAndControlWrapper}>
+              <PeriodController
+                currentIndex={currentIndex}
+                changePeriod={changePeriod}
+              />
+              <Pagination activeIndex={activeIndex} handleClick={changePeriod} />
+            </section>
+            <section
+              className={styles.swiperWrapper}
+              key={`swiper-${animationIndex}`}
+            >
+              <CustomSwiper setSwiper={setSwiper} data={currentPeriod.events} />
+              <SwiperControls
+                swiper={swiper}
+                isBeginning={isBeginning}
+                isEnd={isEnd}
+              />
+            </section>
+          </main>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
